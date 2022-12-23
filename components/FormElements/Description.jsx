@@ -1,0 +1,16 @@
+export default function Description({ description }) {
+	if (description.trim() === '') {
+		return null
+	}
+
+	return (
+		<>
+			<div className="description-wrapper relative inline overflow-y-visible">
+				<span className="icon peer mx-2 cursor-help">ℹ️</span>
+				<div className="description pointer-events-none absolute inline-block w-max max-w-xs rounded-md border border-blue-100 bg-blue-50 px-3 py-2 opacity-0 transition-all peer-hover:pointer-events-auto peer-hover:opacity-100">
+					{description.trim()}
+				</div>
+			</div>
+		</>
+	)
+}
