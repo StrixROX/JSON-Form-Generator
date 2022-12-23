@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react'
 
 function generateElement(schema) {
-	const type = schema.uiType
-
-	// if (type === 'Input') {
-	// }
-
-	return <p>{JSON.stringify(schema)}</p>
+	// code
 }
 
 export default function Preview({ scrollbarStyles, rawSchemaInput }) {
