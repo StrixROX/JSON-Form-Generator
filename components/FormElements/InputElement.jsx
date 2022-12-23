@@ -17,8 +17,8 @@ export default function InputElement(schema) {
 
 	return (
 		<>
-			<div className="input-wrapper rounded-lg border border-purple-100 bg-purple-50 px-3 py-2">
-				<label className="mb-1 block text-sm font-medium text-gray-900">
+			<div className="wrapper grid grid-cols-2 rounded-lg border border-purple-100 bg-purple-50 px-3 py-2">
+				<label className="flex content-start items-center text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
 					{!!validate && validate.required ? (
@@ -26,7 +26,6 @@ export default function InputElement(schema) {
 					) : null}
 					<Description description={description} />
 				</label>
-
 				<input
 					type="text"
 					name={jsonKey}
@@ -39,7 +38,11 @@ export default function InputElement(schema) {
 
 				{/* error message on pattern mismatch */}
 				{match ? null : (
-					<p className="my-1 text-sm text-red-600">Invalid value</p>
+					<>
+						<p className="col-span-2 mt-2 border-t border-purple-200 pt-1.5 text-sm text-red-600">
+							Invalid value
+						</p>
+					</>
 				)}
 			</div>
 		</>
