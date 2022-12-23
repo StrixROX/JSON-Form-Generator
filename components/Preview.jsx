@@ -1,20 +1,33 @@
 import { useState, useEffect } from 'react'
 
+function generateElement(schema) {
+	const type = schema.uiType
+
+	// if (type === 'Input') {
+	// }
+
+	return <p>{JSON.stringify(schema)}</p>
+}
+
 export default function Preview({ scrollbarStyles, rawSchemaInput }) {
-	const [parsedSchema, setParsedSchema] = useState('[]')
+	const [parsedSchema, setParsedSchema] = useState([])
 
 	useEffect(() => {
 		try {
-			setParsedSchema(JSON.stringify(JSON.parse(rawSchemaInput)))
+			setParsedSchema(JSON.parse(rawSchemaInput))
 		} catch {
-			if (rawSchemaInput.trim() === '') setParsedSchema('[]')
+			if (rawSchemaInput.trim() === '') setParsedSchema([])
 		}
 	}, [rawSchemaInput])
 
 	return (
 		<>
 			<div className={`${scrollbarStyles} preview h-full w-full`}>
-				<pre>"{parsedSchema}"</pre>
+				<form className="h-full w-full overflow-auto">
+					{parsedSchema
+						.sort((a, b) => a.sort - b.sort)
+						.map(el => generateElement(el))}
+				</form>
 			</div>
 		</>
 	)
