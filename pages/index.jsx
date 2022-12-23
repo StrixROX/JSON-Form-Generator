@@ -23,6 +23,7 @@ export default function Home() {
 	const [schema, updateSchema] = useState('')
 
 	function schemaUpdateHandler(data) {
+		// assuming input is always valid schema
 		updateSchema(data)
 	}
 
