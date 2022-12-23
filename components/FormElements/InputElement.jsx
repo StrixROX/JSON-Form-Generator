@@ -1,23 +1,31 @@
 import Description from './Description'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function InputElement(schema) {
 	const { label, description, icon, jsonKey, placeholder, validate, pattern } =
 		schema
 
+	const text = useRef()
+
 	const [match, setMatch] = useState(true)
 
 	// pattern matching
-	function validateInput(e) {
-		if (!!pattern && pattern.trim() !== '') {
+	function validateInput() {
+		if (text.current.value !== '' && !!pattern && pattern.trim() !== '') {
 			const reg = new RegExp(pattern)
-			setMatch(reg.test(e.target.value))
+			setMatch(reg.test(text.current.value))
+		} else {
+			setMatch(true)
 		}
 	}
 
+	useEffect(() => {
+		validateInput()
+	}, [pattern, text])
+
 	return (
 		<>
-			<div className="wrapper grid grid-cols-2 rounded-lg border border-purple-100 bg-purple-50 px-3 py-2">
+			<div className="wrapper mb-2 grid grid-cols-2 rounded-lg border border-purple-100 bg-purple-50 px-3 py-2">
 				<label className="flex content-start items-center text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
@@ -27,6 +35,7 @@ export default function InputElement(schema) {
 					<Description description={description} />
 				</label>
 				<input
+					ref={text}
 					type="text"
 					name={jsonKey}
 					placeholder={placeholder}
@@ -39,7 +48,7 @@ export default function InputElement(schema) {
 				{/* error message on pattern mismatch */}
 				{match ? null : (
 					<>
-						<p className="col-span-2 mt-2 border-t border-purple-200 pt-1.5 text-sm text-red-600">
+						<p className="col-span-2 mt-2 border-t border-purple-200 px-1 pt-2 text-sm text-red-600">
 							Invalid value
 						</p>
 					</>
