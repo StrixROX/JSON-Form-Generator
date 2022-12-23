@@ -1,7 +1,9 @@
-export default function Preview({ scrollbarStyles }) {
+export default function Preview({ scrollbarStyles, schemaInput }) {
 	return (
 		<>
-			<div className={`${scrollbarStyles} preview h-full w-full`}>Preview</div>
+			<div className={`${scrollbarStyles} preview h-full w-full`}>
+				{schemaInput}
+			</div>
 		</>
 	)
 }
