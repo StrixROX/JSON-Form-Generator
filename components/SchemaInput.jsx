@@ -51,7 +51,7 @@ export default function SchemaInput({ scrollbarStyles, schemaUpdateHandler }) {
 					spellCheck="false"></textarea>
 
 				<button
-					class="absolute top-0 right-0 rounded-lg border bg-white p-2 shadow-md focus:ring-2 focus:ring-slate-200 hover:bg-neutral-50"
+					className="absolute top-0 right-0 rounded-lg border bg-white p-2 shadow-md focus:ring-2 focus:ring-slate-200 hover:bg-neutral-50"
 					onClick={prettifyInput}
 					title="Prettify Input">
 					🪄
