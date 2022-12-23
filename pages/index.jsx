@@ -46,14 +46,14 @@ export default function Home() {
 				</h1>
 				<div className="flex h-3/5 w-full flex-row overflow-hidden border border-gray-200 shadow-md sm:rounded-2xl">
 					<div
-						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} schema-wrapper h-full w-full border-r-2 ${Theme.SEPARATOR_COLOR}`}>
+						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} schema-wrapper h-full w-1/2 border-r-2 ${Theme.SEPARATOR_COLOR}`}>
 						<SchemaInput
 							scrollbarStyles={Theme.SCROLLBAR_STYLES}
 							schemaUpdateHandler={schemaUpdateHandler}
 						/>
 					</div>
 					<div
-						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper h-full w-full text-lg`}>
+						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper h-full w-1/2 text-lg`}>
 						<Preview
 							scrollbarStyles={Theme.SCROLLBAR_STYLES}
 							rawSchemaInput={schema}
