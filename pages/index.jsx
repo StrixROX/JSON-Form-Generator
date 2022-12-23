@@ -23,7 +23,6 @@ export default function Home() {
 	const [schema, updateSchema] = useState('')
 
 	function schemaUpdateHandler(data) {
-		// assuming input is always valid schema
 		updateSchema(data)
 	}
 
@@ -57,7 +56,7 @@ export default function Home() {
 						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper h-full w-full text-lg`}>
 						<Preview
 							scrollbarStyles={Theme.SCROLLBAR_STYLES}
-							schemaInput={schema}
+							rawSchemaInput={schema}
 						/>
 					</div>
 				</div>

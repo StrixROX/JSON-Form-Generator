@@ -23,9 +23,9 @@ export default function SchemaInput({ scrollbarStyles, schemaUpdateHandler }) {
 				selectionStart + tabSize,
 				selectionStart + tabSize
 			)
-
-			schemaUpdateHandler(inputArea.current.value)
 		}
+
+		schemaUpdateHandler(inputArea.current.value)
 	}
 
 	return (
