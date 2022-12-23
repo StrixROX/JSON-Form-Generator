@@ -5,6 +5,7 @@ export default function InputElement(schema) {
 	const {
 		label,
 		description,
+		level,
 		icon,
 		jsonKey,
 		placeholder,
@@ -14,7 +15,10 @@ export default function InputElement(schema) {
 
 	return (
 		<>
-			<div className="wrapper mb-2 flex flex-col items-stretch justify-start rounded-lg border border-purple-100 bg-purple-50 px-3 py-2">
+			<div
+				className={`${
+					level == 0 ? 'border' : ''
+				} wrapper mb-2 flex flex-col items-stretch justify-start rounded-lg border-purple-100 bg-purple-50 px-3 py-2`}>
 				<label className="mb-2 flex content-start items-center border-b border-purple-200 pt-2 pb-3 text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}

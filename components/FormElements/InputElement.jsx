@@ -2,8 +2,16 @@ import Description from './Description'
 import { useState, useEffect, useRef } from 'react'
 
 export default function InputElement(schema) {
-	const { label, description, icon, jsonKey, placeholder, validate, pattern } =
-		schema
+	const {
+		label,
+		description,
+		level,
+		icon,
+		jsonKey,
+		placeholder,
+		validate,
+		pattern,
+	} = schema
 
 	const text = useRef()
 
@@ -25,7 +33,10 @@ export default function InputElement(schema) {
 
 	return (
 		<>
-			<div className="wrapper mb-2 grid grid-cols-2 rounded-lg border border-purple-100 bg-purple-50 px-3 py-2">
+			<div
+				className={`${
+					level == 0 ? 'border' : ''
+				} wrapper mb-2 grid grid-cols-2 rounded-lg border-purple-100 bg-purple-50 px-3 py-2`}>
 				<label className="flex content-start items-center text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
