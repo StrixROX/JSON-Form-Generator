@@ -28,16 +28,35 @@ export default function SchemaInput({ scrollbarStyles, schemaUpdateHandler }) {
 		schemaUpdateHandler(inputArea.current.value)
 	}
 
+	function prettifyInput() {
+		try {
+			inputArea.current.value = JSON.stringify(
+				JSON.parse(inputArea.current.value),
+				null,
+				2
+			)
+		} catch {}
+	}
+
 	return (
 		<>
-			<textarea
-				ref={inputArea}
-				name="schema"
-				className={`${editorFont.className} ${scrollbarStyles} h-full w-full cursor-text resize-none bg-transparent outline-none`}
-				onChange={() => schemaUpdateHandler(inputArea.current.value)}
-				onKeyDown={handleTab}
-				placeholder="UI Schema..."
-				spellCheck="false"></textarea>
+			<div className="wrapper relative h-full w-full">
+				<textarea
+					ref={inputArea}
+					name="schema"
+					className={`${editorFont.className} ${scrollbarStyles} h-full w-full cursor-text resize-none bg-transparent outline-none`}
+					onChange={() => schemaUpdateHandler(inputArea.current.value)}
+					onKeyDown={handleTab}
+					placeholder="UI Schema..."
+					spellCheck="false"></textarea>
+
+				<button
+					class="absolute top-0 right-0 rounded-lg border bg-white p-2 shadow-md focus:ring-2 focus:ring-slate-200 hover:bg-neutral-50"
+					onClick={prettifyInput}
+					title="Prettify Input">
+					🪄
+				</button>
+			</div>
 		</>
 	)
 }
