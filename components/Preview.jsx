@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'
 
-function generateElement(schema) {
-	// code
+import FormElements from './FormElements/FormElements'
+
+function generateElement(key, schema) {
+	const type = schema.uiType
+
+	if (type === 'Input') {
+		return FormElements.Input(key, schema)
+	}
 }
 
 export default function Preview({ scrollbarStyles, rawSchemaInput }) {
@@ -17,11 +23,12 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 
 	return (
 		<>
-			<div className={`${scrollbarStyles} preview h-full w-full`}>
-				<form className="h-full w-full overflow-auto">
+			<div className="preview h-full w-full">
+				<form
+					className={`${scrollbarStyles} h-full w-full overflow-auto overflow-y-visible`}>
 					{parsedSchema
-						.sort((a, b) => a.sort - b.sort)
-						.map(el => generateElement(el))}
+						.sort((a, b) => a.sort - b.sort) // element sorting feature
+						.map((el, key) => generateElement(key, el))}
 				</form>
 			</div>
 		</>
