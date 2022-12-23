@@ -17,8 +17,8 @@ export default function InputElement(schema) {
 
 	return (
 		<>
-			<div className="input-wrapper p-2">
-				<label className="mb-2 block text-sm font-medium text-gray-900">
+			<div className="input-wrapper rounded-lg border border-purple-100 bg-purple-50 px-3 py-2">
+				<label className="mb-1 block text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
 					{!!validate && validate.required ? (
