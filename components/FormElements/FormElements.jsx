@@ -8,5 +8,11 @@ export default function generateElement(key, schema) {
 		return <InputElement key={key} {...schema} />
 	} else if (type === 'Group') {
 		return <ElementGroup key={key} {...schema} />
+	} else {
+		return (
+			<p>
+				{type}_{key}
+			</p>
+		)
 	}
 }
