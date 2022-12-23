@@ -1,14 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import FormElements from './FormElements/FormElements'
-
-function generateElement(key, schema) {
-	const type = schema.uiType
-
-	if (type === 'Input') {
-		return FormElements.Input(key, schema)
-	}
-}
+import generateElement from './FormElements/FormElements'
 
 export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	const [parsedSchema, setParsedSchema] = useState([])
