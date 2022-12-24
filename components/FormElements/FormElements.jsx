@@ -2,6 +2,7 @@ import ElementGroup from './ElementGroup'
 import InputElement from './InputElement'
 import RadioElement from './RadioElement'
 import OptionalFieldGroup from './OptionalFieldGroup'
+import SelectElement from './SelectElement'
 
 export default function generateElement(key, schema, keyPrefix = '') {
 	const type = schema.uiType
@@ -16,6 +17,8 @@ export default function generateElement(key, schema, keyPrefix = '') {
 		return (
 			<OptionalFieldGroup key={key} schema={schema} keyPrefix={keyPrefix} />
 		)
+	} else if (type === 'Select') {
+		return <SelectElement key={key} schema={schema} keyPrefix={keyPrefix} />
 	} else {
 		return (
 			<p>
