@@ -1,12 +1,9 @@
 import Description from './Description'
 import { jsonKeyJoin } from './FormElements'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
+import { FormDataContext } from '../FormDataContext'
 
-export default function InputElement({
-	keyPrefix,
-	schema,
-	formInputUpdateHandler,
-}) {
+export default function InputElement({ keyPrefix, schema }) {
 	const {
 		label,
 		description,
@@ -22,6 +19,8 @@ export default function InputElement({
 
 	const text = useRef()
 
+	const { updateFormData } = useContext(FormDataContext)
+
 	const [matches, setMatches] = useState(true)
 
 	// pattern matching
@@ -35,7 +34,7 @@ export default function InputElement({
 	}
 
 	function updateValue(to) {
-		formInputUpdateHandler({ [jsonKey]: to })
+		updateFormData({ [jsonKey]: to })
 
 		setMatches(checkInput(to))
 	}

@@ -1,11 +1,7 @@
 import Description from './Description'
 import generateElement, { jsonKeyJoin } from './FormElements'
 
-export default function ElementGroup({
-	keyPrefix,
-	schema,
-	formInputUpdateHandler,
-}) {
+export default function ElementGroup({ keyPrefix, schema }) {
 	const {
 		label,
 		description,
@@ -35,14 +31,7 @@ export default function ElementGroup({
 				</label>
 				{subParameters
 					?.sort((a, b) => a.sort - b.sort) // element sorting feature
-					?.map((el, key) =>
-						generateElement(
-							key,
-							el,
-							formInputUpdateHandler,
-							(keyPrefix = jsonKey)
-						)
-					)}
+					?.map((el, key) => generateElement(key, el, (keyPrefix = jsonKey)))}
 			</div>
 		</>
 	)

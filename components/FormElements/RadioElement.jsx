@@ -1,12 +1,9 @@
 import Radio from './RadioElement_Radio'
 import { jsonKeyJoin } from './FormElements'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { FormDataContext } from '../FormDataContext'
 
-export default function RadioElement({
-	keyPrefix,
-	schema,
-	formInputUpdateHandler,
-}) {
+export default function RadioElement({ keyPrefix, schema }) {
 	const {
 		label,
 		description,
@@ -18,6 +15,8 @@ export default function RadioElement({
 	} = schema
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
+
+	const { updateFormData } = useContext(FormDataContext)
 
 	const [value, setValue] = useState(validate?.defaultValue)
 
@@ -34,7 +33,7 @@ export default function RadioElement({
 	function updateValue(to) {
 		if (!checkValue(to)) to = ''
 
-		formInputUpdateHandler({ [jsonKey]: to })
+		updateFormData({ [jsonKey]: to })
 
 		setValue(to)
 	}

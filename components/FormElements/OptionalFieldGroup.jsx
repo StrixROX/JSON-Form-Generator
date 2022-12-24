@@ -1,10 +1,8 @@
+import { useState, useEffect, useContext } from 'react'
 import { jsonKeyJoin } from './FormElements'
+import { FormDataContext } from '../FormDataContext'
 
-export default function OptionalFieldGroup({
-	keyPrefix,
-	schema,
-	formInputUpdateHandler,
-}) {
+export default function OptionalFieldGroup({ keyPrefix, schema }) {
 	const {
 		label,
 		description,
@@ -19,9 +17,21 @@ export default function OptionalFieldGroup({
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
+	const { formData, updateFormData } = useContext(FormDataContext)
+
+	const [visible, setVisible] = useState(false)
+
+	function updateVisibility() {}
+
+	useEffect(() => {
+		updateVisibility()
+	}, [formData])
+
 	return (
 		<>
-			<div className="wrapper">optional field: {jsonKey}</div>
+			<div className="wrapper">
+				optional field: {jsonKey} {visible.toString()}{' '}
+			</div>
 		</>
 	)
 }
