@@ -47,8 +47,8 @@ export default function InputElement({ keyPrefix, schema }) {
 		<>
 			<div
 				className={`${
-					level == 0 ? 'border' : ''
-				} wrapper mb-2 grid grid-cols-2 rounded-lg border-purple-100 bg-purple-50 px-3 py-2`}>
+					level == 0 ? 'border px-6 py-2' : ''
+				} wrapper mb-2 grid grid-cols-2 rounded-lg border-purple-100 bg-purple-50`}>
 				<label
 					htmlFor={jsonKey}
 					className="flex content-start items-center text-sm font-medium text-gray-900">

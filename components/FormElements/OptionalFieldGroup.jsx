@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { jsonKeyJoin } from './FormElements'
+import generateElement, { jsonKeyJoin } from './FormElements'
 import { FormDataContext } from '../FormDataContext'
 
 export default function OptionalFieldGroup({ keyPrefix, schema }) {
@@ -17,7 +17,7 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
-	const { formData, updateFormData } = useContext(FormDataContext)
+	const { formData } = useContext(FormDataContext)
 
 	const [visible, setVisible] = useState(false)
 
@@ -48,7 +48,14 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 
 	return (
 		<>
-			<div className="wrapper">optional field: {jsonKey}</div>
+			<div
+				className={`${
+					level == 0 ? 'border px-6 py-2' : ''
+				} wrapper mb-2 flex flex-col items-stretch justify-start rounded-lg border-purple-100 bg-purple-50`}>
+				{subParameters
+					?.sort((a, b) => a.sort - b.sort) // element sorting feature
+					?.map((el, key) => generateElement(key, el, (keyPrefix = jsonKey)))}
+			</div>
 		</>
 	)
 }

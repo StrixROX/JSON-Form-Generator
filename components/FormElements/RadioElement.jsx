@@ -46,8 +46,8 @@ export default function RadioElement({ keyPrefix, schema }) {
 		<>
 			<div
 				className={`${
-					level == 0 ? 'border' : ''
-				} wrapper mb-2 grid grid-cols-2 gap-2 rounded-lg border-purple-50 bg-purple-50 px-3 py-2`}>
+					level == 0 ? 'border px-2 py-2' : ''
+				} wrapper mb-2 grid grid-cols-2 gap-2 rounded-lg border-purple-50 bg-purple-50`}>
 				{validate?.options.map((el, key) => (
 					<Radio
 						key={key}
