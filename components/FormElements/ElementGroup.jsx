@@ -1,7 +1,7 @@
 import Description from './Description'
 import generateElement from './FormElements'
 
-export default function InputElement(schema) {
+export default function ElementGroup({ schema }) {
 	const {
 		label,
 		description,
