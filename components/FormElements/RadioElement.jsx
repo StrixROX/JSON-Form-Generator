@@ -2,7 +2,11 @@ import Radio from './RadioElement_Radio'
 import { jsonKeyJoin } from './FormElements'
 import { useState, useEffect } from 'react'
 
-export default function RadioElement({ keyPrefix, schema }) {
+export default function RadioElement({
+	keyPrefix,
+	schema,
+	formInputUpdateHandler,
+}) {
 	const {
 		label,
 		description,
@@ -17,9 +21,27 @@ export default function RadioElement({ keyPrefix, schema }) {
 
 	const [value, setValue] = useState(validate?.defaultValue)
 
+	function checkValue(val) {
+		let res = false
+
+		validate?.options.forEach(el => {
+			el?.value === val ? (res = true) : null
+		})
+
+		return res
+	}
+
+	function updateValue(to) {
+		if (!checkValue(to)) to = ''
+
+		formInputUpdateHandler({ [jsonKey]: to })
+
+		setValue(to)
+	}
+
 	useEffect(() => {
-		setValue(validate?.defaultValue)
-	}, [validate])
+		updateValue(validate?.defaultValue)
+	}, [schema])
 
 	return (
 		<>
@@ -37,7 +59,7 @@ export default function RadioElement({ keyPrefix, schema }) {
 							checked: value === el.value,
 							immutable: validate?.immutable,
 						}}
-						updateHandler={to => setValue(to)}
+						updateHandler={updateValue}
 					/>
 				))}
 			</div>

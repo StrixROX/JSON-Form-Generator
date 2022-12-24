@@ -4,6 +4,7 @@ import generateElement from './FormElements/FormElements'
 
 export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	const [parsedSchema, setParsedSchema] = useState([])
+	const [formData, setFormData] = useState({})
 
 	useEffect(() => {
 		try {
@@ -13,6 +14,10 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 		}
 	}, [rawSchemaInput])
 
+	function formInputUpdateHandler(data) {
+		console.log(data)
+	}
+
 	return (
 		<>
 			<div className="preview h-full w-full">
@@ -20,7 +25,7 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 					className={`${scrollbarStyles} h-full w-full overflow-auto overflow-y-visible`}>
 					{parsedSchema
 						.sort((a, b) => a.sort - b.sort) // element sorting feature
-						.map((el, key) => generateElement(key, el))}
+						.map((el, key) => generateElement(key, el, formInputUpdateHandler))}
 				</form>
 			</div>
 		</>

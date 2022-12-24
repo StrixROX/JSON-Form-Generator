@@ -3,17 +3,50 @@ import InputElement from './InputElement'
 import RadioElement from './RadioElement'
 import OptionalFieldGroup from './OptionalFieldGroup'
 
-export default function generateElement(key, schema, prefix = '') {
+export default function generateElement(
+	key,
+	schema,
+	formInputUpdateHandler,
+	keyPrefix = ''
+) {
 	const type = schema.uiType
 
 	if (type === 'Input') {
-		return <InputElement key={key} schema={schema} keyPrefix={prefix} />
+		return (
+			<InputElement
+				key={key}
+				schema={schema}
+				keyPrefix={keyPrefix}
+				formInputUpdateHandler={formInputUpdateHandler}
+			/>
+		)
 	} else if (type === 'Group') {
-		return <ElementGroup key={key} schema={schema} keyPrefix={prefix} />
+		return (
+			<ElementGroup
+				key={key}
+				schema={schema}
+				keyPrefix={keyPrefix}
+				formInputUpdateHandler={formInputUpdateHandler}
+			/>
+		)
 	} else if (type === 'Radio') {
-		return <RadioElement key={key} schema={schema} keyPrefix={prefix} />
+		return (
+			<RadioElement
+				key={key}
+				schema={schema}
+				keyPrefix={keyPrefix}
+				formInputUpdateHandler={formInputUpdateHandler}
+			/>
+		)
 	} else if (type === 'Ignore') {
-		return <OptionalFieldGroup key={key} schema={schema} keyPrefix={prefix} />
+		return (
+			<OptionalFieldGroup
+				key={key}
+				schema={schema}
+				keyPrefix={keyPrefix}
+				formInputUpdateHandler={formInputUpdateHandler}
+			/>
+		)
 	} else {
 		return (
 			<p>
