@@ -1,6 +1,6 @@
 import { jsonKeyJoin } from './FormElements'
 
-export default function OptionalField({ keyPrefix, schema }) {
+export default function OptionalFieldGroup({ keyPrefix, schema }) {
 	const {
 		label,
 		description,
