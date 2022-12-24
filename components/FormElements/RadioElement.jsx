@@ -53,7 +53,7 @@ export default function RadioElement({ keyPrefix, schema }) {
 						key={key}
 						schema={{
 							...el,
-							id: key,
+							id: jsonKey + '_' + key.toString(),
 							name: jsonKey,
 							checked: value === el.value,
 							immutable: validate?.immutable,
