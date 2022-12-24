@@ -1,17 +1,20 @@
 import Description from './Description'
+import { jsonKeyJoin } from './FormElements'
 import { useState, useEffect, useRef } from 'react'
 
-export default function InputElement({ schema }) {
+export default function InputElement({ keyPrefix, schema }) {
 	const {
 		label,
 		description,
 		level,
 		icon,
-		jsonKey,
+		jsonKey: _jsonKey,
 		placeholder,
 		validate,
 		pattern,
 	} = schema
+
+	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
 	const text = useRef()
 

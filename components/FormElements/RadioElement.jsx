@@ -1,9 +1,19 @@
 import Radio from './RadioElement_Radio'
+import { jsonKeyJoin } from './FormElements'
 import { useState, useEffect } from 'react'
 
-export default function RadioElement({ schema }) {
-	const { label, description, level, icon, jsonKey, placeholder, validate } =
-		schema
+export default function RadioElement({ keyPrefix, schema }) {
+	const {
+		label,
+		description,
+		level,
+		icon,
+		jsonKey: _jsonKey,
+		placeholder,
+		validate,
+	} = schema
+
+	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
 	const [value, setValue] = useState(validate?.defaultValue)
 
