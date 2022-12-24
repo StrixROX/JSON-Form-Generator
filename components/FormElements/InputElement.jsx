@@ -1,7 +1,7 @@
 import Description from './Description'
 import { useState, useEffect, useRef } from 'react'
 
-export default function InputElement(schema) {
+export default function InputElement({ schema }) {
 	const {
 		label,
 		description,
@@ -37,7 +37,9 @@ export default function InputElement(schema) {
 				className={`${
 					level == 0 ? 'border' : ''
 				} wrapper mb-2 grid grid-cols-2 rounded-lg border-purple-100 bg-purple-50 px-3 py-2`}>
-				<label className="flex content-start items-center text-sm font-medium text-gray-900">
+				<label
+					htmlFor={jsonKey}
+					className="flex content-start items-center text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
 					{!!validate && validate.required ? (
@@ -46,6 +48,7 @@ export default function InputElement(schema) {
 					<Description description={description} />
 				</label>
 				<input
+					id={jsonKey}
 					ref={text}
 					type="text"
 					name={jsonKey}
