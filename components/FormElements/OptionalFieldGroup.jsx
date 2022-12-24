@@ -21,17 +21,34 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 
 	const [visible, setVisible] = useState(false)
 
-	function updateVisibility() {}
+	function updateVisibility() {
+		const conditionMeet = conditions.map(el => {
+			const lvalue = '"' + formData[el.jsonKey] + '"'
+			const op = el.op
+			const rvalue = '"' + el.value + '"'
+
+			let res = null
+			if (lvalue && op && rvalue) {
+				try {
+					res = eval(lvalue + op + rvalue)
+				} catch {}
+			}
+
+			return res && el.action === 'enable'
+		})
+
+		setVisible(conditionMeet.every(x => x))
+	}
 
 	useEffect(() => {
 		updateVisibility()
 	}, [formData])
 
+	if (!visible) return null
+
 	return (
 		<>
-			<div className="wrapper">
-				optional field: {jsonKey} {visible.toString()}{' '}
-			</div>
+			<div className="wrapper">optional field: {jsonKey}</div>
 		</>
 	)
 }
