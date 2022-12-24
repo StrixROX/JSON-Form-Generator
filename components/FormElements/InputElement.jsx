@@ -29,7 +29,7 @@ export default function InputElement({ schema }) {
 
 	useEffect(() => {
 		validateInput()
-	}, [pattern, text])
+	}, [text])
 
 	return (
 		<>
