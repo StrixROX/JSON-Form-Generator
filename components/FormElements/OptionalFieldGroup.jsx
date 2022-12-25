@@ -17,7 +17,7 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
-	const { formData } = useContext(FormDataContext)
+	const { formData, removeFormDataKeyGroup } = useContext(FormDataContext)
 
 	const [visible, setVisible] = useState(false)
 
@@ -42,6 +42,7 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 
 	useEffect(() => {
 		updateVisibility()
+		if (!visible) removeFormDataKeyGroup(jsonKey)
 	}, [formData])
 
 	if (!visible) return null
@@ -54,7 +55,7 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 				} wrapper mb-2 flex flex-col items-stretch justify-start rounded-lg border-purple-100 bg-purple-50`}>
 				{subParameters
 					?.sort((a, b) => a.sort - b.sort) // element sorting feature
-					?.map((el, key) => generateElement(key, el, (keyPrefix = jsonKey)))}
+					?.map((el, key) => generateElement(key, el, jsonKey))}
 			</div>
 		</>
 	)

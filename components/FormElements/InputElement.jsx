@@ -1,6 +1,6 @@
 import Description from './Description'
 import { jsonKeyJoin } from './FormElements'
-import { useState, useEffect, useRef, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { FormDataContext } from '../FormDataContext'
 
 export default function InputElement({ keyPrefix, schema }) {
@@ -17,10 +17,9 @@ export default function InputElement({ keyPrefix, schema }) {
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
-	const text = useRef()
-
 	const { updateFormData } = useContext(FormDataContext)
 
+	const [value, setValue] = useState('')
 	const [matches, setMatches] = useState(true)
 
 	// pattern matching
@@ -36,12 +35,13 @@ export default function InputElement({ keyPrefix, schema }) {
 	function updateValue(to) {
 		updateFormData({ [jsonKey]: to })
 
+		setValue(to)
 		setMatches(checkInput(to))
 	}
 
 	useEffect(() => {
-		updateValue(text.current.value)
-	}, [validate, text])
+		updateValue(value)
+	}, [])
 
 	return (
 		<>
@@ -61,13 +61,12 @@ export default function InputElement({ keyPrefix, schema }) {
 				</label>
 				<input
 					id={jsonKey}
-					ref={text}
 					type="text"
 					name={jsonKey}
 					placeholder={placeholder}
 					readOnly={!!validate ? validate.immutable : false}
 					required={!!validate ? validate.required : false}
-					onChange={() => updateValue(text.current.value)}
+					onChange={e => updateValue(e.target.value)}
 					className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:ring focus:ring-purple-300"
 				/>
 

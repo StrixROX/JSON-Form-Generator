@@ -40,7 +40,7 @@ export default function RadioElement({ keyPrefix, schema }) {
 
 	useEffect(() => {
 		updateValue(validate?.defaultValue)
-	}, [schema])
+	}, [])
 
 	return (
 		<>

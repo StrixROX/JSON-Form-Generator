@@ -31,7 +31,7 @@ export default function ElementGroup({ keyPrefix, schema }) {
 				</label>
 				{subParameters
 					?.sort((a, b) => a.sort - b.sort) // element sorting feature
-					?.map((el, key) => generateElement(key, el, (keyPrefix = jsonKey)))}
+					?.map((el, key) => generateElement(key, el, jsonKey))}
 			</div>
 		</>
 	)

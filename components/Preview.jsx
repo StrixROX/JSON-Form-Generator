@@ -10,6 +10,20 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 		setFormData(prevData => ({ ...prevData, ...data }))
 	}
 
+	function removeFormDataKey(key) {
+		setFormData(prevData => {
+			delete prevData[key]
+
+			return prevData
+		})
+	}
+
+	function removeFormDataKeyGroup(key) {
+		const pattern = new RegExp(`^${key}`)
+		const keyGroup = Object.keys(formData).filter(x => pattern.test(x))
+		keyGroup.forEach(key => removeFormDataKey(key))
+	}
+
 	useEffect(() => {
 		try {
 			setParsedSchema(
@@ -23,7 +37,13 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	return (
 		<>
 			<div className="preview h-full w-full">
-				<FormDataContext.Provider value={{ formData, updateFormData }}>
+				<FormDataContext.Provider
+					value={{
+						formData,
+						updateFormData,
+						removeFormDataKey,
+						removeFormDataKeyGroup,
+					}}>
 					<form
 						className={`${scrollbarStyles} h-full w-full overflow-auto overflow-y-visible`}>
 						{parsedSchema.map((el, key) => generateElement(key, el))}

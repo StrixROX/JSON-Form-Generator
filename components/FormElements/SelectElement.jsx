@@ -1,6 +1,6 @@
 import { jsonKeyJoin } from './FormElements'
 import Description from './Description'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FormDataContext } from '../FormDataContext'
 
 export default function SelectElement({ keyPrefix, schema }) {
@@ -32,6 +32,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 		return res
 	}
 
+	// function names need refactoring
 	function updateSelection(to) {
 		if (!validate?.options) return null
 
@@ -54,7 +55,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 
 	useEffect(() => {
 		onSelectionUpdate(validate?.defaultValue)
-	}, [schema])
+	}, [])
 
 	return (
 		<>
