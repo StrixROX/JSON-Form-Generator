@@ -82,10 +82,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 					required={validate?.required}
 					disabled={validate?.immutable}>
 					{validate?.options?.map((el, key) => (
-						<option
-							key={key}
-							value={el.value}
-							defaultValue={el.value === value}>
+						<option key={key} value={el.value} selected={el.value === value}>
 							{el.label}
 						</option>
 					))}
