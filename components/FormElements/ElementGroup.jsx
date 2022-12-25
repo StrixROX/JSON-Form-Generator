@@ -24,9 +24,7 @@ export default function ElementGroup({ keyPrefix, schema }) {
 				<label className="conent-start mb-2 flex items-center border-b border-purple-200 pt-2 pb-3 text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
-					{!!validate && validate.required ? (
-						<span className="text-red-600">*</span>
-					) : null}
+					{validate?.required ? <span className="text-red-600">*</span> : null}
 					<Description description={description} />
 				</label>
 				{subParameters

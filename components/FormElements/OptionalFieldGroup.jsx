@@ -23,7 +23,7 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 
 	function updateVisibility() {
 		const conditionMeet = conditions.map(el => {
-			const lvalue = '"' + formData[el.jsonKey] + '"'
+			const lvalue = '"' + (formData[el.jsonKey] || '') + '"'
 			const op = el.op
 			const rvalue = '"' + el.value + '"'
 

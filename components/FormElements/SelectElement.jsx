@@ -68,9 +68,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 					className="flex h-full items-center justify-start font-medium">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
-					{!!validate && validate.required ? (
-						<span className="text-red-600">*</span>
-					) : null}
+					{validate?.required ? <span className="text-red-600">*</span> : null}
 					<Description description={description} />
 				</label>
 

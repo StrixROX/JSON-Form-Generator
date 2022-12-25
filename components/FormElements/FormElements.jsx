@@ -21,8 +21,8 @@ export default function generateElement(key, schema, keyPrefix = '') {
 		return <SelectElement key={key} schema={schema} keyPrefix={keyPrefix} />
 	} else {
 		return (
-			<p>
-				{type}_{key}
+			<p key={key}>
+				{type}_{schema.jsonKey}
 			</p>
 		)
 	}

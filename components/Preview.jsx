@@ -44,6 +44,7 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 						removeFormDataKey,
 						removeFormDataKeyGroup,
 					}}>
+					{console.log(JSON.stringify(formData, null, 2))}
 					<form
 						className={`${scrollbarStyles} h-full w-full overflow-auto overflow-y-visible`}>
 						{parsedSchema.map((el, key) => generateElement(key, el))}

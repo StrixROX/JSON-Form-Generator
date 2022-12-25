@@ -24,7 +24,7 @@ export default function InputElement({ keyPrefix, schema }) {
 
 	// pattern matching
 	function checkInput(input) {
-		if (input !== '' && !!pattern && pattern.trim() !== '') {
+		if (input !== '' && pattern?.trim() !== '') {
 			const reg = new RegExp(pattern)
 			return reg.test(input)
 		}
@@ -54,7 +54,7 @@ export default function InputElement({ keyPrefix, schema }) {
 					className="flex content-start items-center text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
-					{!!validate && validate.required ? (
+					{validate?.required ? (
 						<span className="text-red-600">*</span>
 					) : null}
 					<Description description={description} />
@@ -64,20 +64,20 @@ export default function InputElement({ keyPrefix, schema }) {
 					type="text"
 					name={jsonKey}
 					placeholder={placeholder}
-					readOnly={!!validate ? validate.immutable : false}
-					required={!!validate ? validate.required : false}
+					readOnly={validate?.immutable || false}
+					required={validate?.required || false}
 					onChange={e => updateValue(e.target.value)}
 					className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:ring focus:ring-purple-300"
 				/>
 
 				{/* error message on pattern mismatch */}
-				{matches ? null : (
+				{!matches ? (
 					<>
 						<p className="col-span-2 mt-2 border-t border-purple-200 px-1 pt-2 text-sm text-red-600">
 							Invalid value
 						</p>
 					</>
-				)}
+				) : null}
 			</div>
 		</>
 	)
