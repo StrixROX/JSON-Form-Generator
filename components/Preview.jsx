@@ -24,6 +24,10 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 		keyGroup.forEach(key => removeFormDataKey(key))
 	}
 
+	function onFormSubmit() {
+		console.log(JSON.stringify(formData, null, 2))
+	}
+
 	useEffect(() => {
 		try {
 			setParsedSchema(
@@ -44,10 +48,17 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 						removeFormDataKey,
 						removeFormDataKeyGroup,
 					}}>
-					{console.log(JSON.stringify(formData, null, 2))}
 					<form
 						className={`${scrollbarStyles} h-full w-full overflow-auto overflow-y-visible`}>
 						{parsedSchema.map((el, key) => generateElement(key, el))}
+						{generateElement('submit_form_button', {
+							label: 'Submit',
+							description: '',
+							icon: '',
+							uiType: 'Submit',
+							jsonKey: 'SUBMIT',
+							onClick: onFormSubmit,
+						})}
 					</form>
 				</FormDataContext.Provider>
 			</div>
