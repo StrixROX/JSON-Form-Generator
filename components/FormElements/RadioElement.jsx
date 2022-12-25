@@ -1,7 +1,7 @@
 import Radio from './RadioElement_Radio'
 import { jsonKeyJoin } from './FormElements'
 import { useState, useEffect, useContext } from 'react'
-import { FormDataContext } from '../FormDataContext'
+import { FormDataContext } from '../../context/FormDataContext'
 
 export default function RadioElement({ keyPrefix, schema }) {
 	const {

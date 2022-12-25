@@ -1,7 +1,7 @@
 import Description from './Description'
 import { jsonKeyJoin } from './FormElements'
 import { useState, useEffect, useContext } from 'react'
-import { FormDataContext } from '../FormDataContext'
+import { FormDataContext } from '../../context/FormDataContext'
 
 export default function InputElement({ keyPrefix, schema }) {
 	const {
@@ -54,9 +54,7 @@ export default function InputElement({ keyPrefix, schema }) {
 					className="flex content-start items-center text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
-					{validate?.required ? (
-						<span className="text-red-600">*</span>
-					) : null}
+					{validate?.required ? <span className="text-red-600">*</span> : null}
 					<Description description={description} />
 				</label>
 				<input

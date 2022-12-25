@@ -1,6 +1,6 @@
 import generateElement from './FormElements/FormElements'
 import { useState, useEffect } from 'react'
-import { FormDataContext } from './FormDataContext'
+import { FormDataContext } from '../context/FormDataContext'
 
 export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	const [parsedSchema, setParsedSchema] = useState([])

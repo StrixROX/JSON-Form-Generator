@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import generateElement, { jsonKeyJoin } from './FormElements'
-import { FormDataContext } from '../FormDataContext'
+import { FormDataContext } from '../../context/FormDataContext'
 
 export default function OptionalFieldGroup({ keyPrefix, schema }) {
 	const {

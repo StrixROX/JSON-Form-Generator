@@ -1,7 +1,7 @@
 import { jsonKeyJoin } from './FormElements'
 import Description from './Description'
 import { useContext, useEffect, useState } from 'react'
-import { FormDataContext } from '../FormDataContext'
+import { FormDataContext } from '../../context/FormDataContext'
 
 export default function SwitchElement({ keyPrefix, schema }) {
 	const {
