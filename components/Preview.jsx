@@ -7,7 +7,7 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	const [formData, setFormData] = useState({})
 
 	function updateFormData(data) {
-		setFormData({ ...formData, ...data })
+		setFormData(prevData => ({ ...prevData, ...data }))
 	}
 
 	useEffect(() => {
