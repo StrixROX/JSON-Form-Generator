@@ -80,9 +80,12 @@ export default function SelectElement({ keyPrefix, schema }) {
 					} block w-full rounded-lg border border-purple-200 bg-white p-2 text-gray-900 outline-none focus:border-purple-300 focus:ring focus:ring-purple-300`}
 					onChange={e => onSelectionUpdate(e.target.value)}
 					required={validate?.required}
-					disabled={validate?.immutable}>
+					disabled={validate?.immutable}
+					defaultValue={
+						checkValue(validate?.defaultValue) ? validate?.defaultValue : ''
+					}>
 					{validate?.options?.map((el, key) => (
-						<option key={key} value={el.value} selected={el.value === value}>
+						<option key={key} value={el.value}>
 							{el.label}
 						</option>
 					))}
