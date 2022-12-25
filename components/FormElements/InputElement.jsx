@@ -17,7 +17,7 @@ export default function InputElement({ keyPrefix, schema }) {
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
-	const { updateFormData } = useContext(FormDataContext)
+	const { updateFormData, reset } = useContext(FormDataContext)
 
 	const [value, setValue] = useState('')
 	const [matches, setMatches] = useState(true)
@@ -43,6 +43,10 @@ export default function InputElement({ keyPrefix, schema }) {
 		updateValue(value)
 	}, [])
 
+	useEffect(() => {
+		updateValue('')
+	}, [reset])
+
 	return (
 		<>
 			<div
@@ -65,6 +69,7 @@ export default function InputElement({ keyPrefix, schema }) {
 					readOnly={validate?.immutable || false}
 					required={validate?.required || false}
 					onChange={e => updateValue(e.target.value)}
+					onReset={() => updateValue('')}
 					className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:ring focus:ring-purple-300"
 				/>
 

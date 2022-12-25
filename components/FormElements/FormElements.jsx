@@ -5,6 +5,7 @@ import OptionalFieldGroup from './OptionalFieldGroup'
 import SelectElement from './SelectElement'
 import SwitchElement from './SwitchElement'
 import SubmitButtonElement from './SubmitButtonElement'
+import ResetButtonElement from './ResetButtonElement'
 
 export default function generateElement(key, schema, keyPrefix = '') {
 	const type = schema.uiType
@@ -26,6 +27,10 @@ export default function generateElement(key, schema, keyPrefix = '') {
 	} else if (type === 'Submit') {
 		return (
 			<SubmitButtonElement key={key} schema={schema} keyPrefix={keyPrefix} />
+		)
+	} else if (type === 'Reset') {
+		return (
+			<ResetButtonElement key={key} schema={schema} keyPrefix={keyPrefix} />
 		)
 	} else {
 		return (

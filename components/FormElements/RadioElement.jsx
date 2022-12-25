@@ -16,7 +16,7 @@ export default function RadioElement({ keyPrefix, schema }) {
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
-	const { updateFormData } = useContext(FormDataContext)
+	const { updateFormData, reset } = useContext(FormDataContext)
 
 	const [value, setValue] = useState(validate?.defaultValue)
 
@@ -40,7 +40,7 @@ export default function RadioElement({ keyPrefix, schema }) {
 
 	useEffect(() => {
 		updateValue(validate?.defaultValue)
-	}, [])
+	}, [reset])
 
 	return (
 		<>

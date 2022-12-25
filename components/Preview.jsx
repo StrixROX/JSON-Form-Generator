@@ -2,9 +2,18 @@ import generateElement from './FormElements/FormElements'
 import { useState, useEffect } from 'react'
 import { FormDataContext } from '../context/FormDataContext'
 
+const submitFormData = data =>
+	new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve(JSON.stringify(data, null, 2))
+		}, 500)
+	})
+
 export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	const [parsedSchema, setParsedSchema] = useState([])
 	const [formData, setFormData] = useState({})
+	const [formState, setFormState] = useState('idle')
+	const [reset, setReset] = useState(0)
 
 	function updateFormData(data) {
 		setFormData(prevData => ({ ...prevData, ...data }))
@@ -25,7 +34,18 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	}
 
 	function onFormSubmit() {
-		console.log(JSON.stringify(formData, null, 2))
+		setFormState('waiting')
+		submitFormData(formData)
+			.then(res => {
+				console.log(res)
+			})
+			.then(() => {
+				setFormState('idle')
+			})
+	}
+
+	function onFormReset() {
+		setReset(prevVal => prevVal + 1) // re-renders the form
 	}
 
 	useEffect(() => {
@@ -38,28 +58,44 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 		}
 	}, [rawSchemaInput])
 
+	const buttonGroup = [
+		{
+			label: 'Reset',
+			description: '',
+			icon: '',
+			uiType: 'Reset',
+			jsonKey: 'RESET',
+			onClick: onFormReset,
+		},
+		{
+			label: 'Submit',
+			description: '',
+			icon: '',
+			uiType: 'Submit',
+			jsonKey: 'SUBMIT',
+			onClick: onFormSubmit,
+		},
+	]
+
 	return (
 		<>
-			<div className="preview h-full w-full">
+			<div className="preview flex h-full w-full flex-col items-center justify-start gap-2">
 				<FormDataContext.Provider
 					value={{
 						formData,
 						updateFormData,
-						removeFormDataKey,
 						removeFormDataKeyGroup,
+						reset,
 					}}>
 					<form
 						className={`${scrollbarStyles} h-full w-full overflow-auto overflow-y-visible`}>
 						{parsedSchema.map((el, key) => generateElement(key, el))}
-						{generateElement('submit_form_button', {
-							label: 'Submit',
-							description: '',
-							icon: '',
-							uiType: 'Submit',
-							jsonKey: 'SUBMIT',
-							onClick: onFormSubmit,
-						})}
 					</form>
+					{parsedSchema.length > 0 ? (
+						<div className="buttons flex w-full flex-row items-start justify-center">
+							{buttonGroup.map((el, key) => generateElement(key, el))}
+						</div>
+					) : null}
 				</FormDataContext.Provider>
 			</div>
 		</>

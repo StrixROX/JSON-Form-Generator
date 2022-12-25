@@ -16,7 +16,7 @@ export default function SwitchElement({ keyPrefix, schema }) {
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
-	const { updateFormData } = useContext(FormDataContext)
+	const { updateFormData, reset } = useContext(FormDataContext)
 
 	const [value, setValue] = useState(false)
 
@@ -26,14 +26,13 @@ export default function SwitchElement({ keyPrefix, schema }) {
 		setValue(to)
 	}
 
-	function onToggle() {
-		setValue(!value)
-		updateValue(!value)
+	function onToggle(e) {
+		updateValue(e.target.checked)
 	}
 
 	useEffect(() => {
-		updateValue(value)
-	}, [])
+		updateValue(!!validate?.defaultValue)
+	}, [reset])
 
 	return (
 		<>
@@ -52,7 +51,7 @@ export default function SwitchElement({ keyPrefix, schema }) {
 					name={jsonKey}
 					value={value}
 					className="peer sr-only"
-					onChange={onToggle}
+					onChange={e => onToggle(e)}
 					checked={value}
 					disabled={validate?.immutable}
 				/>

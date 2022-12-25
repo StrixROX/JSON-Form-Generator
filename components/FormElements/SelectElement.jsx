@@ -16,7 +16,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
 
-	const { updateFormData } = useContext(FormDataContext)
+	const { updateFormData, reset } = useContext(FormDataContext)
 
 	const [value, setValue] = useState(null)
 	const [selection, setSelection] = useState(null)
@@ -55,7 +55,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 
 	useEffect(() => {
 		onSelectionUpdate(validate?.defaultValue)
-	}, [])
+	}, [reset])
 
 	return (
 		<>
