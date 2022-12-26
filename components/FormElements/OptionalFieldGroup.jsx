@@ -57,7 +57,7 @@ export default function OptionalFieldGroup({ keyPrefix, schema }) {
 			<div
 				className={`${
 					level == 0 ? 'border px-6 py-2' : ''
-				} wrapper flex w-full flex-col items-stretch justify-start rounded-lg border-purple-100 bg-purple-50`}>
+				} wrapper flex w-full flex-col items-stretch justify-start gap-2 rounded-lg border-purple-100 bg-purple-50`}>
 				{subParameters
 					?.sort((a, b) => a.sort - b.sort) // element sorting feature
 					?.map((el, key) => generateElement(key, el, jsonKey))}
