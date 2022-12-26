@@ -1,5 +1,5 @@
 export default function Description({ description }) {
-	if (description.trim() === '') return null
+	if (!description || description.trim() === '') return null
 
 	return (
 		<>
