@@ -37,9 +37,7 @@ export default function SwitchElement({ keyPrefix, schema }) {
 	return (
 		<>
 			<label
-				className={`${
-					level == 0 ? 'justify-start px-3 py-2' : 'justify-between'
-				} relative my-2 flex w-full cursor-pointer items-center `}>
+				className={`relative my-2 flex w-full cursor-pointer items-center justify-between `}>
 				<span className="text-sm font-medium">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
