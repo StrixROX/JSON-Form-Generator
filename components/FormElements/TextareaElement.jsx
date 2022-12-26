@@ -42,7 +42,7 @@ export default function TextareaElement({ keyPrefix, schema }) {
 				} wrapper grid w-full grid-cols-2 rounded-lg border-purple-100 bg-purple-50`}>
 				<label
 					htmlFor={jsonKey}
-					className="mb-2 block text-sm font-medium text-gray-900">
+					className="block py-2 text-sm font-medium text-gray-900">
 					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 					{label}
 					{validate?.required ? <span className="text-red-600">*</span> : null}
