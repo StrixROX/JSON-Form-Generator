@@ -28,18 +28,12 @@ export default function generateElement(key, schema, keyPrefix = '') {
 		return <SubmitButtonElement key={key} schema={schema} />
 	} else if (type === 'Reset') {
 		return <ResetButtonElement key={key} schema={schema} />
-	} else {
-		return (
-			<p key={key}>
-				{type}_{schema.jsonKey}
-			</p>
-		)
 	}
 }
 
 export function jsonKeyJoin(key1, key2) {
-	key1 = key1.trim()
-	key2 = key2.trim()
+	key1 = key1?.trim() || ''
+	key2 = key2?.trim() || ''
 
 	// clean key1
 	while (key1[key1.length - 1] === '.') {
