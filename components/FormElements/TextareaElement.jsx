@@ -31,8 +31,8 @@ export default function TextareaElement({ keyPrefix, schema }) {
 				<textarea
 					id={jsonKey}
 					name={jsonKey}
-					rows="4"
-					className="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 outline-none focus:ring focus:ring-purple-300"
+					rows="6"
+					className="block w-full resize-none rounded-lg border border-gray-200 bg-white p-2.5 text-sm text-gray-900 outline-none focus:ring focus:ring-purple-300"
 					placeholder={placeholder}
 					readOnly={validate?.immutable || false}
 					required={validate?.required || false}></textarea>
