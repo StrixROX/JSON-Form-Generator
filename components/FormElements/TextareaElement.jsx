@@ -1,5 +1,7 @@
 import { jsonKeyJoin } from './FormElements'
 import Description from './Description'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { FormDataContext } from '../../context/FormDataContext'
 
 export default function TextareaElement({ keyPrefix, schema }) {
 	const {
@@ -13,6 +15,24 @@ export default function TextareaElement({ keyPrefix, schema }) {
 	} = schema
 
 	const jsonKey = jsonKeyJoin(keyPrefix, _jsonKey)
+
+	const { updateFormData, reset } = useContext(FormDataContext)
+
+	const textarea = useRef()
+	const [value, setValue] = useState('')
+
+	function updateValue(to) {
+		if (!!!to) to = ''
+
+		updateFormData({ [jsonKey]: to })
+
+		setValue(to)
+		textarea.current.value = to
+	}
+
+	useEffect(() => {
+		updateValue(validate?.defaultValue)
+	}, [reset])
 
 	return (
 		<>
@@ -29,13 +49,17 @@ export default function TextareaElement({ keyPrefix, schema }) {
 					<Description description={description} />
 				</label>
 				<textarea
+					ref={textarea}
 					id={jsonKey}
 					name={jsonKey}
 					rows="6"
 					className="block w-full resize-none rounded-lg border border-gray-200 bg-white p-2.5 text-sm text-gray-900 outline-none focus:ring focus:ring-purple-300"
+					onChange={e => updateValue(e.target.value)}
+					defaultValue={validate?.defaultValue || ''}
 					placeholder={placeholder}
 					readOnly={validate?.immutable || false}
-					required={validate?.required || false}></textarea>
+					required={validate?.required || false}
+					maxLength={validate?.maxLength}></textarea>
 			</div>
 		</>
 	)
