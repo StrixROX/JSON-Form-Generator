@@ -22,7 +22,8 @@ export default function SelectElement({ keyPrefix, schema }) {
 	const [selection, setSelection] = useState(null)
 
 	function checkValue(val) {
-		if (!validate?.options) return null
+		if (!validate?.options || validate.options.constructor != Array)
+			return false
 
 		let res = false
 		validate.options.forEach((el, key) => {
@@ -34,7 +35,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 
 	// function names need refactoring
 	function updateSelection(to) {
-		if (!validate?.options) return null
+		if (!validate?.options || validate.options.constructor != Array) return null
 
 		let res = null
 		validate.options.forEach((el, key) => {
@@ -53,8 +54,17 @@ export default function SelectElement({ keyPrefix, schema }) {
 		updateSelection(to)
 	}
 
+	const defaultValue =
+		!!validate?.defaultValue && checkValue(validate?.defaultValue)
+			? validate.defaultValue
+			: !!validate?.options &&
+			  validate.options.constructor == Array &&
+			  validate.options.length > 0
+			? validate?.options[0]?.value
+			: null
+
 	useEffect(() => {
-		onSelectionUpdate(validate?.defaultValue)
+		onSelectionUpdate(defaultValue)
 	}, [reset])
 
 	return (
@@ -62,7 +72,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 			<div
 				className={`${
 					level == 0 ? 'border px-6 py-2' : ''
-				} wrapper mb-2 grid grid-cols-2 rounded-lg border-purple-100 bg-purple-50 text-sm`}>
+				} wrapper grid w-full grid-cols-2 rounded-lg border-purple-100 bg-purple-50 text-sm`}>
 				<label
 					htmlFor={jsonKey}
 					className="flex h-full items-center justify-start font-medium">
@@ -81,17 +91,17 @@ export default function SelectElement({ keyPrefix, schema }) {
 					onChange={e => onSelectionUpdate(e.target.value)}
 					required={validate?.required}
 					disabled={validate?.immutable}
-					defaultValue={
-						checkValue(validate?.defaultValue) ? validate?.defaultValue : ''
-					}>
-					{validate?.options?.map((el, key) => (
-						<option key={key} value={el.value}>
-							{el.label}
-						</option>
-					))}
+					defaultValue={defaultValue}>
+					{validate && validate.options?.constructor == Array
+						? validate?.options?.map((el, key) => (
+								<option key={key} value={el.value}>
+									{el.label}
+								</option>
+						  ))
+						: null}
 				</select>
 
-				{selection ? (
+				{selection?.description ? (
 					<div
 						className="desc overflow-hidden text-ellipsis whitespace-nowrap pr-8 text-xs text-gray-400"
 						title={selection.description}>
