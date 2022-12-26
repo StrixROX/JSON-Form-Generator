@@ -99,7 +99,7 @@ export default function Preview({
 						className={`${scrollbarStyles} flex h-full w-full flex-col items-stretch justify-start gap-2 overflow-auto overflow-y-visible`}>
 						{parsedSchema.map((el, key) => generateElement(key, el))}
 					</form>
-					{parsedSchema.length > 0 ? (
+					{parsedSchema.length > 0 && parsedSchema.some(x => !!x.uiType) ? (
 						<div className="buttons flex w-full flex-row items-start justify-center">
 							{buttonGroup.map((el, key) => generateElement(key, el))}
 						</div>
