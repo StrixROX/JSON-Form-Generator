@@ -49,11 +49,13 @@ export default function Preview({
 	}
 
 	function onFormReset() {
+		setFormData({})
 		setReset(prevVal => prevVal + 1) // re-renders the form
 	}
 
 	useEffect(() => {
 		try {
+			onFormReset()
 			setParsedSchema(
 				JSON.parse(rawSchemaInput).sort((a, b) => a.sort - b.sort) // sorting feature + checks if data passed is an array
 			)
