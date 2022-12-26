@@ -6,6 +6,7 @@ import SelectElement from './SelectElement'
 import SwitchElement from './SwitchElement'
 import SubmitButtonElement from './SubmitButtonElement'
 import ResetButtonElement from './ResetButtonElement'
+import TextareaElement from './TextareaElement'
 
 export default function generateElement(key, schema, keyPrefix = '') {
 	const type = schema.uiType
@@ -24,6 +25,8 @@ export default function generateElement(key, schema, keyPrefix = '') {
 		return <SelectElement key={key} schema={schema} keyPrefix={keyPrefix} />
 	} else if (type === 'Switch') {
 		return <SwitchElement key={key} schema={schema} keyPrefix={keyPrefix} />
+	} else if (type === 'Textarea') {
+		return <TextareaElement key={key} schema={schema} keyPrefix={keyPrefix} />
 	} else if (type === 'Submit') {
 		return <SubmitButtonElement key={key} schema={schema} />
 	} else if (type === 'Reset') {
