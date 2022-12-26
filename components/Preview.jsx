@@ -9,7 +9,11 @@ const submitFormData = data =>
 		}, 500)
 	})
 
-export default function Preview({ scrollbarStyles, rawSchemaInput }) {
+export default function Preview({
+	scrollbarStyles,
+	rawSchemaInput,
+	submitHandler,
+}) {
 	const [parsedSchema, setParsedSchema] = useState([])
 	const [formData, setFormData] = useState({})
 	const [formState, setFormState] = useState('idle')
@@ -37,7 +41,7 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 		setFormState('submitting')
 		submitFormData(formData)
 			.then(res => {
-				console.log(res)
+				submitHandler(res)
 			})
 			.then(() => {
 				setFormState('idle')
