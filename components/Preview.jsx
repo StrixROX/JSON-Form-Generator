@@ -55,10 +55,10 @@ export default function Preview({
 
 	useEffect(() => {
 		try {
-			onFormReset()
 			setParsedSchema(
 				JSON.parse(rawSchemaInput).sort((a, b) => a.sort - b.sort) // sorting feature + checks if data passed is an array
 			)
+			onFormReset()
 		} catch {
 			if (rawSchemaInput.trim() === '') setParsedSchema([])
 		}
@@ -96,7 +96,7 @@ export default function Preview({
 						reset,
 					}}>
 					<form
-						className={`${scrollbarStyles} h-full w-full overflow-auto overflow-y-visible`}>
+						className={`${scrollbarStyles} flex h-full w-full flex-col items-stretch justify-start gap-2 overflow-auto overflow-y-visible`}>
 						{parsedSchema.map((el, key) => generateElement(key, el))}
 					</form>
 					{parsedSchema.length > 0 ? (
