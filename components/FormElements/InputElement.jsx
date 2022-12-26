@@ -1,6 +1,6 @@
 import Description from './Description'
 import { jsonKeyJoin } from './FormElements'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import { FormDataContext } from '../../context/FormDataContext'
 
 export default function InputElement({ keyPrefix, schema }) {
@@ -19,6 +19,7 @@ export default function InputElement({ keyPrefix, schema }) {
 
 	const { updateFormData, reset } = useContext(FormDataContext)
 
+	const input = useRef()
 	const [value, setValue] = useState('')
 	const [matches, setMatches] = useState(true)
 
@@ -36,6 +37,7 @@ export default function InputElement({ keyPrefix, schema }) {
 		updateFormData({ [jsonKey]: to })
 
 		setValue(to)
+		input.current.value = to
 		setMatches(checkInput(to))
 	}
 
@@ -62,6 +64,7 @@ export default function InputElement({ keyPrefix, schema }) {
 					<Description description={description} />
 				</label>
 				<input
+					ref={input}
 					id={jsonKey}
 					type="text"
 					name={jsonKey}
