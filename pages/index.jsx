@@ -64,7 +64,11 @@ export default function Home() {
 					</div>
 					<div
 						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper relative h-full w-1/2 text-lg`}>
-						<Preview rawSchemaInput={schema} submitHandler={onFormSubmit} />
+						<Preview
+							scrollbarStyles={Theme.SCROLLBAR_STYLES}
+							rawSchemaInput={schema}
+							submitHandler={onFormSubmit}
+						/>
 						{response ? (
 							<div className="absolute top-4 left-4 right-4 bottom-4 z-10">
 								<Result
