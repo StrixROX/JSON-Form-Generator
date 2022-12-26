@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import SchemaInput from '../components/SchemaInput'
 import Preview from '../components/Preview'
+import Result from '../components/Result'
 
 // fonts
 import { Open_Sans } from '@next/font/google'
@@ -20,10 +21,19 @@ const Theme = {
 }
 
 export default function Home() {
-	const [schema, updateSchema] = useState('')
+	const [schema, setSchema] = useState('')
+	const [response, setResponse] = useState(null)
 
 	function schemaUpdateHandler(data) {
-		updateSchema(data)
+		setSchema(data)
+	}
+
+	function onFormSubmit(res) {
+		setResponse(res)
+	}
+
+	function onResponseClosed() {
+		setResponse(null)
 	}
 
 	return (
@@ -53,11 +63,17 @@ export default function Home() {
 						/>
 					</div>
 					<div
-						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper h-full w-1/2 text-lg`}>
-						<Preview
-							scrollbarStyles={Theme.SCROLLBAR_STYLES}
-							rawSchemaInput={schema}
-						/>
+						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper relative h-full w-1/2 text-lg`}>
+						<Preview rawSchemaInput={schema} submitHandler={onFormSubmit} />
+						{response ? (
+							<div className="absolute top-4 left-4 right-4 bottom-4 z-10">
+								<Result
+									scrollbarStyles={Theme.SCROLLBAR_STYLES}
+									res={response}
+									onCloseHandler={onResponseClosed}
+								/>
+							</div>
+						) : null}
 					</div>
 				</div>
 			</div>
