@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![image](https://user-images.githubusercontent.com/40167899/209675751-e51bd43b-1ad0-4e7c-a6b0-2658a6077f18.png)
 
-## Getting Started
+<p align="center">
+  <a href="https://frontend-assignment-iota.vercel.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Ffrontend-assignment-iota.vercel.app%2F"></a>
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/strix/frontend-assignment">
+  <img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/strixrox/frontend-assignment">
+</p>
+<pre align="center" style="font-weight: bold">A Next.js app that generates dynamic forms from JSON UI schemas</pre>
 
-First, run the development server:
-
+## How to use
+To clone and run this application, you will need the following programs installed on your system:
+- [Git](https://git-scm.com/) (v2.25.1 used for this project)
+- [Node.js](https://nodejs.org/en/) (v16.15.1 used for this project)
 ```bash
-npm run dev
-# or
-yarn dev
+# clone the repository
+$ git clone https://github.com/StrixROX/Frontend-Assignment.git
+
+# go into the repository
+$ cd Frontend-Assignment
+
+# install dependencies using either
+$ npm install # OR yarn install
+
+# start the development server
+$ npm run dev # OR yarn run dev
+```
+The app should now be accessible by opening https://localhost:3000 (unless stated otherwise in the terminal output) in your browser.
+
+NOTE: There is only one route `/` in the app. This is a single page application (SPA).
+
+## Building
+```bash
+# creates an optimized production build of your application
+$ npm run build # OR yarn run build
+
+# run the built app
+$ npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
+- On first run, the app will look like this
+![image](https://user-images.githubusercontent.com/40167899/209680308-2c47d24a-e659-4245-8d93-781f7ba3e48b.png)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- On the left side, you can enter the JSON schema for the form and it will be rendered on the right side as you type
+![image](https://user-images.githubusercontent.com/40167899/209682154-2a425e57-8f1a-4b7c-9266-0abc4ec08bb0.png)
+NOTE: The `Reset` and `Submit` buttons appear automatically and don't need to be specified in the schema.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Click on the magic wand `🪄` icon to prettify the input JSON
+![image](https://user-images.githubusercontent.com/40167899/209682841-38646c18-d933-4580-a028-40a51e8056af.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Click on the `Reset` button to reset the form to its default state as specified in the schema.
+![image](https://user-images.githubusercontent.com/40167899/209683371-c8055e5a-8523-46d6-91b2-9a1bb56c6831.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Clicking on the `Submit` button will display the data collected by the form.
+![image](https://user-images.githubusercontent.com/40167899/209683797-1d3b6fc6-1184-4b59-a0e9-829e635bbcd4.png)
 
-## Learn More
+## More Information
+For details on supported form elements and respective schema definitions, check out the [Wiki](https://github.com/StrixROX/Frontend-Assignment/wiki).
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please report any bugs in [Issues](https://github.com/StrixROX/Frontend-Assignment/issues)
