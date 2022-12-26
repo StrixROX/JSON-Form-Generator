@@ -76,7 +76,9 @@ export default function SelectElement({ keyPrefix, schema }) {
 				<label
 					htmlFor={jsonKey}
 					className="flex h-full items-center justify-start font-medium">
-					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
+					{icon?.trim().length > 0 ? (
+						<span className="mr-2">{icon}</span>
+					) : null}
 					{label}
 					{validate?.required ? <span className="text-red-600">*</span> : null}
 					<Description description={description} />
@@ -105,7 +107,7 @@ export default function SelectElement({ keyPrefix, schema }) {
 					<div
 						className="desc overflow-hidden text-ellipsis whitespace-nowrap pr-8 text-xs text-gray-400"
 						title={selection.description}>
-						{selection.icon !== '' ? (
+						{selection.icon?.trim().length > 0 ? (
 							<span className="mr-2">{selection.icon}</span>
 						) : null}
 						{selection.description}

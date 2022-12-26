@@ -27,7 +27,7 @@ export default function SubmitButtonElement({ schema }) {
 						}}
 					/>
 				) : null}
-				{icon !== '' ? <span className="mr-2">{icon}</span> : null}
+				{icon?.trim().length > 0 ? <span className="mr-2">{icon}</span> : null}
 				{label}
 				<Description description={description} />
 			</button>

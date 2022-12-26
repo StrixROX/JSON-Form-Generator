@@ -19,7 +19,7 @@ export default function Radio({ schema, updateHandler }) {
 			<label
 				htmlFor={id}
 				className="block cursor-pointer rounded-lg border border-purple-200 px-5 py-3 text-center text-sm peer-checked:border-purple-300 peer-checked:bg-purple-100">
-				{icon !== '' ? <span className="mr-2">{icon}</span> : null}
+				{icon?.trim().length > 0 ? <span className="mr-2">{icon}</span> : null}
 				{label}
 				<Description description={description} />
 			</label>

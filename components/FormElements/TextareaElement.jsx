@@ -43,7 +43,9 @@ export default function TextareaElement({ keyPrefix, schema }) {
 				<label
 					htmlFor={jsonKey}
 					className="block py-2 text-sm font-medium text-gray-900">
-					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
+					{icon?.trim().length > 0 ? (
+						<span className="mr-2">{icon}</span>
+					) : null}
 					{label}
 					{validate?.required ? <span className="text-red-600">*</span> : null}
 					<Description description={description} />

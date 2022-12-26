@@ -39,7 +39,9 @@ export default function SwitchElement({ keyPrefix, schema }) {
 			<label
 				className={`relative my-2 flex w-full cursor-pointer items-center justify-between `}>
 				<span className="text-sm font-medium">
-					{icon !== '' ? <span className="mr-2">{icon}</span> : null}
+					{icon?.trim().length > 0 ? (
+						<span className="mr-2">{icon}</span>
+					) : null}
 					{label}
 					{validate?.required ? <span className="text-red-600">*</span> : null}
 					<Description description={description} />
