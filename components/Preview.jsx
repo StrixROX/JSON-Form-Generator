@@ -37,7 +37,8 @@ export default function Preview({
 		keyGroup.forEach(key => removeFormDataKey(key))
 	}
 
-	function onFormSubmit() {
+	function onFormSubmit(e) {
+		e.preventDefault()
 		setFormState('submitting')
 		submitFormData(formData)
 			.then(res => {
@@ -81,7 +82,7 @@ export default function Preview({
 			uiType: 'Submit',
 			jsonKey: 'SUBMIT',
 			formState,
-			onClick: onFormSubmit,
+			onClick: () => null,
 		},
 	]
 
@@ -96,14 +97,15 @@ export default function Preview({
 						reset,
 					}}>
 					<form
+						onSubmit={onFormSubmit}
 						className={`${scrollbarStyles} flex h-full w-full flex-col items-stretch justify-start gap-2 overflow-auto overflow-y-visible`}>
 						{parsedSchema.map((el, key) => generateElement(key, el))}
+						{parsedSchema.length > 0 && parsedSchema.some(x => !!x.uiType) ? (
+							<div className="buttons flex w-full flex-row items-start justify-center gap-1.5">
+								{buttonGroup.map((el, key) => generateElement(key, el))}
+							</div>
+						) : null}
 					</form>
-					{parsedSchema.length > 0 && parsedSchema.some(x => !!x.uiType) ? (
-						<div className="buttons flex w-full flex-row items-start justify-center">
-							{buttonGroup.map((el, key) => generateElement(key, el))}
-						</div>
-					) : null}
 				</FormDataContext.Provider>
 			</div>
 		</>

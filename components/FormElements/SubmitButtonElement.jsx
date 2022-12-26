@@ -3,21 +3,21 @@ import Description from './Description'
 export default function SubmitButtonElement({ schema }) {
 	const { label, description, icon, formState, onClick } = schema
 
-	function clickHandler() {
+	function submitHandler() {
 		onClick()
 	}
 
 	return (
 		<>
 			<button
-				type="button"
+				type="submit"
 				disabled={formState === 'submitting'}
 				className={`${
 					formState === 'submitting'
 						? 'bg-purple-400 text-white'
 						: 'bg-purple-700 text-white focus:ring-4 focus:ring-purple-300 hover:bg-purple-800'
-				} float-right m-1 w-1/2 rounded-lg px-8 py-2.5 text-sm font-medium focus:outline-none`}
-				onClick={clickHandler}>
+				} float-right w-1/2 rounded-lg px-8 py-2.5 text-sm font-medium focus:outline-none`}
+				onSubmit={submitHandler}>
 				{formState === 'submitting' ? (
 					<img
 						src="/loader.svg"

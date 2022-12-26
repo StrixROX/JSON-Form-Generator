@@ -16,7 +16,7 @@ export default function ResetButtonElement({ schema }) {
 					formState === 'submitting'
 						? 'border-puruple-300 bg-white text-purple-300'
 						: 'border-purple-300 bg-white text-purple-500 focus:ring-4 focus:ring-purple-300 hover:bg-purple-50 active:bg-purple-100'
-				} float-right m-1 w-1/2 rounded-lg border px-8 py-2.5 text-sm font-medium focus:outline-none`}
+				} float-right w-1/2 rounded-lg border px-8 py-2.5 text-sm font-medium focus:outline-none`}
 				onClick={clickHandler}>
 				{icon !== '' ? <span className="mr-2">{icon}</span> : null}
 				{label}
