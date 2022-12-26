@@ -25,13 +25,9 @@ export default function generateElement(key, schema, keyPrefix = '') {
 	} else if (type === 'Switch') {
 		return <SwitchElement key={key} schema={schema} keyPrefix={keyPrefix} />
 	} else if (type === 'Submit') {
-		return (
-			<SubmitButtonElement key={key} schema={schema} keyPrefix={keyPrefix} />
-		)
+		return <SubmitButtonElement key={key} schema={schema} />
 	} else if (type === 'Reset') {
-		return (
-			<ResetButtonElement key={key} schema={schema} keyPrefix={keyPrefix} />
-		)
+		return <ResetButtonElement key={key} schema={schema} />
 	} else {
 		return (
 			<p key={key}>

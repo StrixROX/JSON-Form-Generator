@@ -34,7 +34,7 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 	}
 
 	function onFormSubmit() {
-		setFormState('waiting')
+		setFormState('submitting')
 		submitFormData(formData)
 			.then(res => {
 				console.log(res)
@@ -65,6 +65,7 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 			icon: '',
 			uiType: 'Reset',
 			jsonKey: 'RESET',
+			formState,
 			onClick: onFormReset,
 		},
 		{
@@ -73,6 +74,7 @@ export default function Preview({ scrollbarStyles, rawSchemaInput }) {
 			icon: '',
 			uiType: 'Submit',
 			jsonKey: 'SUBMIT',
+			formState,
 			onClick: onFormSubmit,
 		},
 	]
