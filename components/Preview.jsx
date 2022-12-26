@@ -98,8 +98,11 @@ export default function Preview({
 					}}>
 					<form
 						onSubmit={onFormSubmit}
-						className={`${scrollbarStyles} flex h-full w-full flex-col items-stretch justify-start gap-2 overflow-auto overflow-y-visible px-2.5`}>
-						{parsedSchema.map((el, key) => generateElement(key, el))}
+						className={`flex h-full w-full flex-col items-stretch justify-start gap-2`}>
+						<div
+							className={`${scrollbarStyles} flex h-full w-full flex-col items-stretch justify-start gap-2 overflow-auto px-2.5`}>
+							{parsedSchema.map((el, key) => generateElement(key, el))}
+						</div>
 						{parsedSchema.length > 0 && parsedSchema.some(x => !!x.uiType) ? (
 							<div className="buttons flex w-full flex-row items-start justify-center gap-1.5">
 								{buttonGroup.map((el, key) => generateElement(key, el))}
