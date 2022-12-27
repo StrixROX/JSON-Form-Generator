@@ -60,6 +60,10 @@ Clicking on the `Submit` button will display the data collected by the form on t
 ![image](https://user-images.githubusercontent.com/40167899/209683797-1d3b6fc6-1184-4b59-a0e9-829e635bbcd4.png)
 
 ## Technologies Used
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40167899/209702524-78f41e74-3f1f-4f7a-a32c-9cdfb79a8905.png" />
+</p>
+
 This project was made using
 - Next.js v13 ([Docs](https://nextjs.org/docs))
 - React.js v18 ([Docs](https://reactjs.org/docs/getting-started.html))
