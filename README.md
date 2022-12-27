@@ -2,8 +2,7 @@
 
 <p align="center">
   <a href="https://frontend-assignment-iota.vercel.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Ffrontend-assignment-iota.vercel.app%2F"></a>
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/strix/frontend-assignment">
-  <img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/strixrox/frontend-assignment">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/strixrox/frontend-assignment">
 </p>
 <pre align="center" style="font-weight: bold">A Next.js app that generates dynamic forms from JSON UI schemas</pre>
 
