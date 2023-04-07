@@ -1,7 +1,7 @@
 ![image](https://user-images.githubusercontent.com/40167899/209675751-e51bd43b-1ad0-4e7c-a6b0-2658a6077f18.png)
 
 <p align="center">
-  <a href="https://frontend-assignment-iota.vercel.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Ffrontend-assignment-iota.vercel.app%2F"></a>
+  <a href="https://frontend-assignment-iota.vercel.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fjson-form-generator.vercel.app%2F"></a>
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/strixrox/frontend-assignment">
 </p>
 <pre align="center" style="font-weight: bold">A Next.js app that generates dynamic forms from JSON UI schemas</pre>
