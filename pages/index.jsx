@@ -31,7 +31,6 @@ export default function Home() {
 	function onFormSubmit(res) {
 		setResponse(res)
 	}
-
 	function onResponseClosed() {
 		setResponse(null)
 	}
@@ -54,6 +53,7 @@ export default function Home() {
 					className={`${Theme.TITLE_COLOR} mb-4 text-4xl font-thin leading-none tracking-tight md:text-5xl lg:text-6xl`}>
 					Form Generator
 				</h1>
+
 				<div className="flex h-3/5 w-full flex-row overflow-hidden border border-gray-200 shadow-md sm:rounded-2xl">
 					<div
 						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} schema-wrapper h-full w-1/2 border-r-2 ${Theme.SEPARATOR_COLOR}`}>
@@ -79,6 +79,12 @@ export default function Home() {
 							</div>
 						) : null}
 					</div>
+				</div>
+
+				<div>
+					<a href="https://github.com/StrixROX/JSON-Form-Generator" target="_blank" className="flex flow-row opacity-50 hover:underline hover:decoration-solid hover:decoration-1">
+						<img src="/github-mark.svg" alt="GitHub" className="h-5 px-2" />GitHub
+					</a>
 				</div>
 			</div>
 		</>
