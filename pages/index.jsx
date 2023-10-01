@@ -82,9 +82,12 @@ export default function Home() {
 					</div>
 				</div>
 
-				<div>
+				<div className="flex flex-row gap-5 justify-center items-center">
 					<a href="https://github.com/StrixROX/JSON-Form-Generator" target="_blank" className="flex flow-row opacity-50 hover:underline hover:decoration-solid hover:decoration-1">
 						<img src="/github-mark.svg" alt="GitHub" className="h-5 px-2" />GitHub
+					</a>
+					<a href="https://github.com/StrixROX/JSON-Form-Generator/wiki" target="_blank" className="flex flow-row opacity-50 hover:underline hover:decoration-solid hover:decoration-1">
+						<img src="/wiki.svg" alt="Wiki" className="h-5 px-2" />Wiki
 					</a>
 				</div>
 			</div>
