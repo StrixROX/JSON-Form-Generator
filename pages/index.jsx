@@ -48,7 +48,7 @@ export default function Home() {
 			</Head>
 
 			<div
-				className={`${defaultFont.className} ${Theme.PAGE_BG} page-wrapper flex w-full flex-col flex-nowrap items-center justify-center gap-4 py-20 sm:px-10 md:gap-6 md:px-20 lg:h-screen lg:gap-8 lg:px-40 lg:py-8`}>
+				className={`${defaultFont.className} ${Theme.PAGE_BG} page-wrapper min-h-screen flex w-full flex-col flex-nowrap items-center justify-center gap-4 py-20 sm:px-10 md:gap-6 md:px-20 lg:h-screen lg:gap-8 lg:px-40 lg:py-8`}>
 				<h1
 					className={`${Theme.TITLE_COLOR} mb-4 text-center text-4xl font-thin leading-none tracking-tight md:text-5xl lg:text-6xl`}>
 					Form Generator
