@@ -4,7 +4,7 @@
   <a href="https://frontend-assignment-iota.vercel.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fjson-form-generator.vercel.app%2F"></a>
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/strixrox/frontend-assignment">
 </p>
-<pre align="center" style="font-weight: bold">A Next.js app that generates dynamic forms from JSON UI schemas</pre>
+<pre align="center" style="font-weight: bold">A responsive Next.js app that generates dynamic forms from JSON UI schemas</pre>
 
 ## How to use
 To clone and run this application, you will need the following programs installed on your system:
