@@ -12,10 +12,10 @@ To clone and run this application, you will need the following programs installe
 - [Node.js](https://nodejs.org/en/) (v16.15.1 used for this project)
 ```bash
 # clone the repository
-$ git clone https://github.com/StrixROX/Frontend-Assignment.git
+$ git clone https://github.com/StrixROX/JSON-Form-Generator.git
 
 # go into the repository
-$ cd Frontend-Assignment
+$ cd JSON-Form-Generator
 
 # install dependencies using either
 $ npm install # OR yarn install
