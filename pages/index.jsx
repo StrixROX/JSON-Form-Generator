@@ -48,22 +48,23 @@ export default function Home() {
 			</Head>
 
 			<div
-				className={`${defaultFont.className} ${Theme.PAGE_BG} page-wrapper flex h-screen w-full flex-col flex-nowrap items-center justify-center gap-4 py-8 sm:px-10 md:gap-6 md:px-20 lg:gap-8 lg:px-40`}>
+				className={`${defaultFont.className} ${Theme.PAGE_BG} page-wrapper flex w-full flex-col flex-nowrap items-center justify-center gap-4 py-20 sm:px-10 md:gap-6 md:px-20 lg:h-screen lg:gap-8 lg:px-40 lg:py-8`}>
 				<h1
-					className={`${Theme.TITLE_COLOR} mb-4 text-4xl font-thin leading-none tracking-tight md:text-5xl lg:text-6xl`}>
+					className={`${Theme.TITLE_COLOR} mb-4 text-center text-4xl font-thin leading-none tracking-tight md:text-5xl lg:text-6xl`}>
 					Form Generator
 				</h1>
 
-				<div className="flex h-3/5 w-full flex-row overflow-hidden border border-gray-200 shadow-md sm:rounded-2xl">
+				<div className="flex h-3/5 w-full flex-col overflow-hidden border border-gray-200 shadow-md sm:rounded-2xl lg:flex-row">
 					<div
-						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} schema-wrapper h-full w-1/2 border-r-2 ${Theme.SEPARATOR_COLOR}`}>
+						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} schema-wrapper h-[50vh] w-full border-b-2 ${Theme.SEPARATOR_COLOR} lg:h-full lg:w-1/2 lg:border-b-0 lg:border-r-2`}>
 						<SchemaInput
 							scrollbarStyles={Theme.SCROLLBAR_STYLES}
 							schemaUpdateHandler={schemaUpdateHandler}
 						/>
 					</div>
+					<div></div>
 					<div
-						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper relative h-full w-1/2 text-lg`}>
+						className={`${Theme.MAIN_BG} ${Theme.INTERFACE_PADDING} preview-wrapper relative h-full w-full text-lg lg:w-1/2 lg:h-full`}>
 						<Preview
 							scrollbarStyles={Theme.SCROLLBAR_STYLES}
 							rawSchemaInput={schema}

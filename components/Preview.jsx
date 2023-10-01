@@ -98,7 +98,7 @@ export default function Preview({
 					}}>
 					<form
 						onSubmit={onFormSubmit}
-						className={`flex h-full w-full flex-col items-stretch justify-start gap-2`}>
+						className={`flex h-full w-full flex-col items-stretch justify-start gap-5 lg:gap-2`}>
 						<div
 							className={`${scrollbarStyles} flex h-full w-full flex-col items-stretch justify-start gap-2 overflow-auto px-2.5`}>
 							{parsedSchema.map((el, key) => generateElement(key, el))}
